@@ -13,6 +13,8 @@
 #endif
 
 
+const int ConstantImageSizeOnDialog = 330;
+
 // CAboutDlg dialog used for App About
 
 class CAboutDlg : public CDialogEx
@@ -59,12 +61,18 @@ CImageRecognitionDlg::CImageRecognitionDlg(CWnd* pParent /*=nullptr*/)
 void CImageRecognitionDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
+	DDX_Control(pDX, IDC_STATIC_1, EtalonImage);
+	DDX_Control(pDX, IDC_STATIC_2, LoadedImage);
 }
 
 BEGIN_MESSAGE_MAP(CImageRecognitionDlg, CDialogEx)
 	ON_WM_SYSCOMMAND()
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
+	ON_BN_CLICKED(IDC_BUTTON1, &CImageRecognitionDlg::OnBnClickedButton1)
+	ON_BN_CLICKED(IDC_BUTTON4, &CImageRecognitionDlg::OnBnClickedButton4)
+	ON_BN_CLICKED(IDC_BUTTON2, &CImageRecognitionDlg::OnBnClickedButton2)
+	ON_BN_CLICKED(IDC_BUTTON3, &CImageRecognitionDlg::OnBnClickedButton3)
 END_MESSAGE_MAP()
 
 
@@ -153,3 +161,140 @@ HCURSOR CImageRecognitionDlg::OnQueryDragIcon()
 	return static_cast<HCURSOR>(m_hIcon);
 }
 
+
+
+void CImageRecognitionDlg::OnBnClickedButton1()
+{
+	OpenFile(Study);
+}
+
+
+void CImageRecognitionDlg::OnBnClickedButton4()
+{
+	// TODO: Add your control notification handler code here
+}
+
+
+void CImageRecognitionDlg::OnBnClickedButton2()
+{
+	OpenFile(Compare);
+}
+
+
+void CImageRecognitionDlg::OnBnClickedButton3()
+{
+	// TODO: Add your control notification handler code here
+}
+
+void CImageRecognitionDlg::OpenFile(function_type function)
+{
+	CFileDialog OpenDialog(TRUE);
+
+	if (OpenDialog.DoModal() == IDOK)
+	{
+		auto FolderPath = OpenDialog.GetFolderPath();
+		auto FileName = OpenDialog.GetFileName();
+
+		if (FolderPath.GetLength() > 0)
+		{
+			if (FolderPath.GetAt(FolderPath.GetLength() - 1) != L'\\')
+			{
+				FolderPath += L'\\';
+			}
+		}
+
+		auto FilePath = FolderPath + FileName;
+
+		function(this, FilePath);
+	}
+}
+
+void Study(CImageRecognitionDlg* ImageRecognitionDlg, CString file_name)
+{
+	if (ImageRecognitionDlg != nullptr)
+	{
+		CImage Image;
+		auto Result = Image.Load(file_name);
+
+		if (SUCCEEDED(Result))
+		{
+			ResizeAndSetToDialogImage(&ImageRecognitionDlg->EtalonImage, Image);
+			//ImageRecognitionDlg->EtalonImage.SetBitmap(Image);
+			//ImageRecognitionDlg->EtalonImage.RedrawWindow();
+		}
+	}
+}
+
+void Compare(CImageRecognitionDlg* ImageRecognitionDlg, CString file_name)
+{
+	if (ImageRecognitionDlg != nullptr)
+	{
+		CImage Image;
+		auto Result = Image.Load(file_name);
+
+		if (SUCCEEDED(Result))
+		{
+			ResizeAndSetToDialogImage(&ImageRecognitionDlg->LoadedImage, Image);		
+			//ImageRecognitionDlg->LoadedImage.SetBitmap(Image);
+			//ImageRecognitionDlg->LoadedImage.RedrawWindow();
+		}
+	}
+}
+
+void ResizeAndSetToDialogImage(CStatic* ImageArea, CImage Image)
+{
+	CImage new_image;
+
+	int w = Image.GetWidth();
+	int h = Image.GetHeight();
+
+	double k = double(w) / double(h);
+
+	int x2 = 0;
+	int y2 = 0;
+
+	if (k > 1)
+	{
+		x2 = int(ConstantImageSizeOnDialog / k);
+		y2 = int(ConstantImageSizeOnDialog);
+	}
+	else
+	{
+		x2 = int(ConstantImageSizeOnDialog);
+		y2 = int(ConstantImageSizeOnDialog * k);
+	}
+
+	if (ImageArea != nullptr)
+	{
+		CDC* ScreenDC = ImageArea->GetDC();
+		if (ScreenDC != nullptr)
+		{
+			CDC* pMDC = new CDC;
+			if (pMDC != nullptr)
+			{
+				pMDC->CreateCompatibleDC(ScreenDC);
+
+				CBitmap* pb = new CBitmap;
+				if (pb != nullptr)
+				{
+					pb->CreateCompatibleBitmap(ScreenDC, x2, y2);
+					CBitmap* pob = pMDC->SelectObject(pb);
+					if (pob != nullptr)
+					{
+						SetStretchBltMode(pMDC->m_hDC, COLORONCOLOR);
+						Image.StretchBlt(pMDC->m_hDC, 0, 0, x2, y2, 0, 0, w, h, SRCCOPY);
+						pMDC->SelectObject(pob);
+
+						new_image.Attach(*pb);
+
+						ImageArea->SetBitmap(new_image);
+						ImageArea->RedrawWindow();
+					}
+					delete pb;
+				}
+				delete pMDC;
+			}
+			ScreenDC->ReleaseOutputDC();
+		}
+	}
+}
