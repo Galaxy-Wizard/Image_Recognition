@@ -15,10 +15,10 @@
 // See ImageRecognition.cpp for the implementation of this class
 //
 
-class CImageRecognitionApp : public CWinApp
+class CImage_RecognitionApp : public CWinApp
 {
 public:
-	CImageRecognitionApp();
+	CImage_RecognitionApp();
 
 // Overrides
 public:
@@ -29,4 +29,4 @@ public:
 	DECLARE_MESSAGE_MAP()
 };
 
-extern CImageRecognitionApp theApp;
+extern CImage_RecognitionApp theApp;

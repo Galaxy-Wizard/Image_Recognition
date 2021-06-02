@@ -48,37 +48,37 @@ BEGIN_MESSAGE_MAP(CAboutDlg, CDialogEx)
 END_MESSAGE_MAP()
 
 
-// CImageRecognitionDlg dialog
+// CImage_RecognitionDlg dialog
 
 
 
-CImageRecognitionDlg::CImageRecognitionDlg(CWnd* pParent /*=nullptr*/)
+CImage_RecognitionDlg::CImage_RecognitionDlg(CWnd* pParent /*=nullptr*/)
 	: CDialogEx(IDD_IMAGERECOGNITION_DIALOG, pParent)
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 }
 
-void CImageRecognitionDlg::DoDataExchange(CDataExchange* pDX)
+void CImage_RecognitionDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
 	DDX_Control(pDX, IDC_STATIC_1, EtalonImage);
 	DDX_Control(pDX, IDC_STATIC_2, LoadedImage);
 }
 
-BEGIN_MESSAGE_MAP(CImageRecognitionDlg, CDialogEx)
+BEGIN_MESSAGE_MAP(CImage_RecognitionDlg, CDialogEx)
 	ON_WM_SYSCOMMAND()
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
-	ON_BN_CLICKED(IDC_BUTTON1, &CImageRecognitionDlg::OnBnClickedButton1)
-	ON_BN_CLICKED(IDC_BUTTON4, &CImageRecognitionDlg::OnBnClickedButton4)
-	ON_BN_CLICKED(IDC_BUTTON2, &CImageRecognitionDlg::OnBnClickedButton2)
-	ON_BN_CLICKED(IDC_BUTTON3, &CImageRecognitionDlg::OnBnClickedButton3)
+	ON_BN_CLICKED(IDC_BUTTON1, &CImage_RecognitionDlg::OnBnClickedButton1)
+	ON_BN_CLICKED(IDC_BUTTON4, &CImage_RecognitionDlg::OnBnClickedButton4)
+	ON_BN_CLICKED(IDC_BUTTON2, &CImage_RecognitionDlg::OnBnClickedButton2)
+	ON_BN_CLICKED(IDC_BUTTON3, &CImage_RecognitionDlg::OnBnClickedButton3)
 END_MESSAGE_MAP()
 
 
-// CImageRecognitionDlg message handlers
+// CImage_RecognitionDlg message handlers
 
-BOOL CImageRecognitionDlg::OnInitDialog()
+BOOL CImage_RecognitionDlg::OnInitDialog()
 {
 	CDialogEx::OnInitDialog();
 
@@ -112,7 +112,7 @@ BOOL CImageRecognitionDlg::OnInitDialog()
 	return TRUE;  // return TRUE  unless you set the focus to a control
 }
 
-void CImageRecognitionDlg::OnSysCommand(UINT nID, LPARAM lParam)
+void CImage_RecognitionDlg::OnSysCommand(UINT nID, LPARAM lParam)
 {
 	if ((nID & 0xFFF0) == IDM_ABOUTBOX)
 	{
@@ -129,7 +129,7 @@ void CImageRecognitionDlg::OnSysCommand(UINT nID, LPARAM lParam)
 //  to draw the icon.  For MFC applications using the document/view model,
 //  this is automatically done for you by the framework.
 
-void CImageRecognitionDlg::OnPaint()
+void CImage_RecognitionDlg::OnPaint()
 {
 	if (IsIconic())
 	{
@@ -156,37 +156,37 @@ void CImageRecognitionDlg::OnPaint()
 
 // The system calls this function to obtain the cursor to display while the user drags
 //  the minimized window.
-HCURSOR CImageRecognitionDlg::OnQueryDragIcon()
+HCURSOR CImage_RecognitionDlg::OnQueryDragIcon()
 {
 	return static_cast<HCURSOR>(m_hIcon);
 }
 
 
 
-void CImageRecognitionDlg::OnBnClickedButton1()
+void CImage_RecognitionDlg::OnBnClickedButton1()
 {
 	OpenFile(Study);
 }
 
 
-void CImageRecognitionDlg::OnBnClickedButton4()
+void CImage_RecognitionDlg::OnBnClickedButton4()
 {
 	// TODO: Add your control notification handler code here
 }
 
 
-void CImageRecognitionDlg::OnBnClickedButton2()
+void CImage_RecognitionDlg::OnBnClickedButton2()
 {
 	OpenFile(Compare);
 }
 
 
-void CImageRecognitionDlg::OnBnClickedButton3()
+void CImage_RecognitionDlg::OnBnClickedButton3()
 {
 	// TODO: Add your control notification handler code here
 }
 
-void CImageRecognitionDlg::OpenFile(function_type function)
+void CImage_RecognitionDlg::OpenFile(function_type function)
 {
 	CFileDialog OpenDialog(TRUE);
 
@@ -209,7 +209,7 @@ void CImageRecognitionDlg::OpenFile(function_type function)
 	}
 }
 
-void Study(CImageRecognitionDlg* ImageRecognitionDlg, CString file_name)
+void Study(CImage_RecognitionDlg* ImageRecognitionDlg, CString file_name)
 {
 	if (ImageRecognitionDlg != nullptr)
 	{
@@ -225,7 +225,7 @@ void Study(CImageRecognitionDlg* ImageRecognitionDlg, CString file_name)
 	}
 }
 
-void Compare(CImageRecognitionDlg* ImageRecognitionDlg, CString file_name)
+void Compare(CImage_RecognitionDlg* ImageRecognitionDlg, CString file_name)
 {
 	if (ImageRecognitionDlg != nullptr)
 	{

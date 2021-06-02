@@ -12,16 +12,16 @@
 #endif
 
 
-// CImageRecognitionApp
+// CImage_RecognitionApp
 
-BEGIN_MESSAGE_MAP(CImageRecognitionApp, CWinApp)
+BEGIN_MESSAGE_MAP(CImage_RecognitionApp, CWinApp)
 	ON_COMMAND(ID_HELP, &CWinApp::OnHelp)
 END_MESSAGE_MAP()
 
 
-// CImageRecognitionApp construction
+// CImage_RecognitionApp construction
 
-CImageRecognitionApp::CImageRecognitionApp()
+CImage_RecognitionApp::CImage_RecognitionApp()
 {
 	// support Restart Manager
 	m_dwRestartManagerSupportFlags = AFX_RESTART_MANAGER_SUPPORT_RESTART;
@@ -31,14 +31,14 @@ CImageRecognitionApp::CImageRecognitionApp()
 }
 
 
-// The one and only CImageRecognitionApp object
+// The one and only CImage_RecognitionApp object
 
-CImageRecognitionApp theApp;
+CImage_RecognitionApp theApp;
 
 
-// CImageRecognitionApp initialization
+// CImage_RecognitionApp initialization
 
-BOOL CImageRecognitionApp::InitInstance()
+BOOL CImage_RecognitionApp::InitInstance()
 {
 	// InitCommonControlsEx() is required on Windows XP if an application
 	// manifest specifies use of ComCtl32.dll version 6 or later to enable
@@ -71,7 +71,7 @@ BOOL CImageRecognitionApp::InitInstance()
 	// such as the name of your company or organization
 	SetRegistryKey(_T("Local AppWizard-Generated Applications"));
 
-	CImageRecognitionDlg dlg;
+	CImage_RecognitionDlg dlg;
 	m_pMainWnd = &dlg;
 	INT_PTR nResponse = dlg.DoModal();
 	if (nResponse == IDOK)

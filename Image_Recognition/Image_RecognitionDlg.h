@@ -4,16 +4,16 @@
 
 #pragma once
 
-class CImageRecognitionDlg;
+class CImage_RecognitionDlg;
 
-typedef void function_type(CImageRecognitionDlg*, CString);
+typedef void function_type(CImage_RecognitionDlg*, CString);
 
 // CImageRecognitionDlg dialog
-class CImageRecognitionDlg : public CDialogEx
+class CImage_RecognitionDlg : public CDialogEx
 {
 // Construction
 public:
-	CImageRecognitionDlg(CWnd* pParent = nullptr);	// standard constructor
+	CImage_RecognitionDlg(CWnd* pParent = nullptr);	// standard constructor
 
 // Dialog Data
 #ifdef AFX_DESIGN_TIME
@@ -46,6 +46,6 @@ public:
 	CStatic LoadedImage;
 };
 
-void Study(CImageRecognitionDlg*, CString);
-void Compare(CImageRecognitionDlg*, CString);
+void Study(CImage_RecognitionDlg*, CString);
+void Compare(CImage_RecognitionDlg*, CString);
 void ResizeAndSetToDialogImage(CStatic* ImageArea, CImage Image);
