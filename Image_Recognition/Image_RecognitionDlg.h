@@ -1,5 +1,5 @@
 
-// ImageRecognitionDlg.h : header file
+// Image_RecognitionDlg.h : header file
 //
 
 #pragma once

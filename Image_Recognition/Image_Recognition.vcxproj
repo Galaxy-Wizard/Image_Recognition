@@ -24,6 +24,7 @@
     <Keyword>MFCProj</Keyword>
     <RootNamespace>ImageRecognition</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>Image_Recognition</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -184,15 +185,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
-    <ClInclude Include="ImageRecognition.h" />
-    <ClInclude Include="ImageRecognitionDlg.h" />
+    <ClInclude Include="Image_Recognition.h" />
+    <ClInclude Include="Image_RecognitionDlg.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ImageRecognition.cpp" />
-    <ClCompile Include="ImageRecognitionDlg.cpp" />
+    <ClCompile Include="Image_Recognition.cpp" />
+    <ClCompile Include="Image_RecognitionDlg.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -201,13 +202,13 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="ImageRecognition.rc" />
+    <ResourceCompile Include="Image_Recognition.rc" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="res\ImageRecognition.rc2" />
+    <None Include="res\Image_Recognition.rc2" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="res\ImageRecognition.ico" />
+    <Image Include="res\Image_Recognition.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

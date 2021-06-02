@@ -4,8 +4,8 @@
 
 #include "pch.h"
 #include "framework.h"
-#include "ImageRecognition.h"
-#include "ImageRecognitionDlg.h"
+#include "Image_Recognition.h"
+#include "Image_RecognitionDlg.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW

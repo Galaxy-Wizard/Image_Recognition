@@ -15,10 +15,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ImageRecognition.h">
+    <ClInclude Include="Image_Recognition.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ImageRecognitionDlg.h">
+    <ClInclude Include="Image_RecognitionDlg.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="framework.h">
@@ -35,10 +35,10 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ImageRecognition.cpp">
+    <ClCompile Include="Image_Recognition.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ImageRecognitionDlg.cpp">
+    <ClCompile Include="Image_RecognitionDlg.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="pch.cpp">
@@ -46,17 +46,17 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="ImageRecognition.rc">
+    <ResourceCompile Include="Image_Recognition.rc">
       <Filter>Resource Files</Filter>
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="res\ImageRecognition.rc2">
+    <None Include="res\Image_Recognition.rc2">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="res\ImageRecognition.ico">
+    <Image Include="res\Image_Recognition.ico">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
